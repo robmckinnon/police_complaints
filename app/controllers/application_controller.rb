@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  def render_not_found message='Page not found.'
+    @title = "Page cannot be found (404 error)"
+    @crumbtrail = "Error: page cannot be found"
+    render :template => 'public/404.html', :status => 404
+  end
+
 end

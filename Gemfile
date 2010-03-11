@@ -16,6 +16,7 @@ gem 'morph'
 gem 'whenever'
 gem 'twfy'
 gem 'fastercsv'
+gem 'sqlite3-ruby'
 # gem 'mechanize'
 
 group :test do
