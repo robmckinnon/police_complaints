@@ -19,6 +19,7 @@ gem 'fastercsv'
 gem 'sqlite3-ruby'
 gem 'heroku'
 gem 'pg'
+gem 'thin'
 # gem 'mechanize'
 
 group :test do
