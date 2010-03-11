@@ -1,3 +1,17 @@
+<div selected="true">
+
+<h1><%=h @police_group.name %></h1>
+<p>Metropolitian Police</p>
+
+<p><span id='grand_total'><%=h @police_group.grand_total %></span> complaints *</p>
+
+<p>moderate level of public complaints against police in 2009</p>
+
+<p>complaints <%=h @police_group.percentage_change %>% <%= @police_group.percentage_change > 0 ? 'higher' : 'lower' %> than 2008</p>
+
+<p id='report'>* total officer/staff level public complaints Dec 2008 to Nov 2009, BSMI Report</p>
+
+<!--
 <p>
   <b>Discriminatory behaviour:</b>
   <%=h @police_group.discriminatory_behaviour %>
@@ -8,10 +22,6 @@
   <%=h @police_group.failures_in_duty %>
 </p>
 
-<p>
-  <b>Grand total:</b>
-  <%=h @police_group.grand_total %>
-</p>
 
 <p>
   <b>Incivility:</b>
@@ -21,11 +31,6 @@
 <p>
   <b>Malpractice:</b>
   <%=h @police_group.malpractice %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%=h @police_group.name %>
 </p>
 
 <p>
@@ -52,7 +57,8 @@
   <b>Traffic irregularity:</b>
   <%=h @police_group.traffic_irregularity %>
 </p>
-
+</div>
 
 <%= link_to 'Edit', edit_police_group_path(@police_group) %> |
 <%= link_to 'Back', police_groups_path %>
+-->
