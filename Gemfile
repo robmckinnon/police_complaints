@@ -18,6 +18,7 @@ gem 'twfy'
 gem 'fastercsv'
 gem 'sqlite3-ruby'
 gem 'heroku'
+gem 'activerecord-postgresql-adapter'
 # gem 'mechanize'
 
 group :test do
