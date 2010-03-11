@@ -1,0 +1,56 @@
+<h1>Editing police_group</h1>
+
+<% form_for(@police_group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :discriminatory_behaviour %><br />
+    <%= f.text_field :discriminatory_behaviour %>
+  </p>
+  <p>
+    <%= f.label :failures_in_duty %><br />
+    <%= f.text_field :failures_in_duty %>
+  </p>
+  <p>
+    <%= f.label :grand_total %><br />
+    <%= f.text_field :grand_total %>
+  </p>
+  <p>
+    <%= f.label :incivility %><br />
+    <%= f.text_field :incivility %>
+  </p>
+  <p>
+    <%= f.label :malpractice %><br />
+    <%= f.text_field :malpractice %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :oppressive_behaviour %><br />
+    <%= f.text_field :oppressive_behaviour %>
+  </p>
+  <p>
+    <%= f.label :other %><br />
+    <%= f.text_field :other %>
+  </p>
+  <p>
+    <%= f.label :percentage_change %><br />
+    <%= f.text_field :percentage_change %>
+  </p>
+  <p>
+    <%= f.label :previous_grand_total %><br />
+    <%= f.text_field :previous_grand_total %>
+  </p>
+  <p>
+    <%= f.label :traffic_irregularity %><br />
+    <%= f.text_field :traffic_irregularity %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @police_group %> |
+<%= link_to 'Back', police_groups_path %>

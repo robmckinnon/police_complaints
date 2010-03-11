@@ -1,0 +1,40 @@
+<h1>Listing police_groups</h1>
+
+<table>
+  <tr>
+    <th>Discriminatory behaviour</th>
+    <th>Failures in duty</th>
+    <th>Grand total</th>
+    <th>Incivility</th>
+    <th>Malpractice</th>
+    <th>Name</th>
+    <th>Oppressive behaviour</th>
+    <th>Other</th>
+    <th>Percentage change</th>
+    <th>Previous grand total</th>
+    <th>Traffic irregularity</th>
+  </tr>
+
+<% @police_groups.each do |police_group| %>
+  <tr>
+    <td><%=h police_group.discriminatory_behaviour %></td>
+    <td><%=h police_group.failures_in_duty %></td>
+    <td><%=h police_group.grand_total %></td>
+    <td><%=h police_group.incivility %></td>
+    <td><%=h police_group.malpractice %></td>
+    <td><%=h police_group.name %></td>
+    <td><%=h police_group.oppressive_behaviour %></td>
+    <td><%=h police_group.other %></td>
+    <td><%=h police_group.percentage_change %></td>
+    <td><%=h police_group.previous_grand_total %></td>
+    <td><%=h police_group.traffic_irregularity %></td>
+    <td><%= link_to 'Show', police_group %></td>
+    <td><%= link_to 'Edit', edit_police_group_path(police_group) %></td>
+    <td><%= link_to 'Destroy', police_group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New police_group', new_police_group_path %>
