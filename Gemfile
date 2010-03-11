@@ -17,6 +17,7 @@ gem 'whenever'
 gem 'twfy'
 gem 'fastercsv'
 gem 'sqlite3-ruby'
+gem 'heroku'
 # gem 'mechanize'
 
 group :test do
