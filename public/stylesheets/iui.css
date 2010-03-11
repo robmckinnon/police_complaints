@@ -398,8 +398,37 @@ fieldset > .row:last-child {
 #grand_total {
   font-weight: bold;
   font-size: 50px;
+  margin-left: 55px;
 }
 
 #report {
   color: grey;
+}
+
+#main {
+  margin-left: 5px;
+}
+
+.High {
+  color: darkred;
+}
+
+.Moderate {
+  color: darkorange;
+}
+
+.Low {
+  color: darkgreen;
+}
+
+.higher {
+  color: red;
+}
+
+.lower {
+  color: green;
+}
+
+.level {
+  font-weight: bold;
 }

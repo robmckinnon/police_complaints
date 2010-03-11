@@ -1,15 +1,19 @@
-<div selected="true">
+<div id="main" selected="true">
 
 <h1><%=h @police_group.name %></h1>
 <p>Metropolitian Police</p>
 
-<p><span id='grand_total'><%=h @police_group.grand_total %></span> complaints *</p>
+<p class="<%= @police_group.rank %>"><span id='grand_total'><%=h @police_group.grand_total %></span> complaints *</p>
 
-<p>moderate level of public complaints against police in 2009</p>
+<p class="level"><%= @police_group.rank %> level of public complaints in 2009</p>
 
-<p>complaints <%=h @police_group.percentage_change %>% <%= @police_group.percentage_change > 0 ? 'higher' : 'lower' %> than 2008</p>
+<% higher = @police_group.percentage_change > 0 %>
+<% higher_or_lower = higher ? 'higher' : 'lower' %>
+<p>complaints <span class="<%= higher_or_lower %>"> <%=h(@police_group.percentage_change).sub('-','') %>% <%= higher_or_lower %></span> than 2008</p>
 
-<p id='report'>* total officer/staff level public complaints Dec 2008 to Nov 2009, BSMI Report</p>
+<p id='report'>* total allegations recorded of officer/staff<br />
+level public complaints Dec 2008 to Nov 2009,
+<br />BSMI Report</p>
 
 <!--
 <p>
