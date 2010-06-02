@@ -1,6 +1,6 @@
 class PoliceGroupsController < ResourceController::Base
 
-  before_filter :ensure_current_url, :only => :show
+  # before_filter :ensure_current_url, :only => :show
 
   private
     def ensure_current_url
