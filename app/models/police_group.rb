@@ -1,6 +1,6 @@
 class PoliceGroup < ActiveRecord::Base
   
-  has_friendly_id :name, :use_slug => true, :strip_diacritics => true
+  has_friendly_id :name, :use_slug => true #, :strip_diacritics => true
 
   def rank
     groups = PoliceGroup.all.sort_by(&:grand_total)

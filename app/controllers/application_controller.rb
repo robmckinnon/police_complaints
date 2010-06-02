@@ -2,6 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 require 'uri'
 require 'morph'
+require 'hpricot'
+require 'rest_client'
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
@@ -21,24 +23,35 @@ class ApplicationController < ActionController::Base
   
   def search
     postcode = params[:postcode]
-    url = "http://policeapi.rkh.co.uk/api/geocode-crime-area?key=rewiredcrime&q="+postcode
-    url = URI.encode(url)
-    response = RestClient.get url
-    xml = response.to_s
-    data = Hash.from_xml(xml)
-    m = Morph.from_hash data
-    area_id = m.response.areas.areas[1].area_id
+    url = "http://maps.met.police.uk/php/lookup.php?pcode="+postcode
+    point = morph_request(url).centre_points.first
     
-    url = "http://policeapi.rkh.co.uk/api/crime-area?key=rewiredcrime&force=metropolitan&area="+area_id
-    url = URI.encode(url)
-    response = RestClient.get url
-    xml = response.to_s
-    data = Hash.from_xml(xml)
-    m = Morph.from_hash data
-    name = m.response.name
+    url = "http://maps.met.police.uk/php/lookup.php?minlat=#{point.lat}&minlng=#{point.lng}&maxlat=#{point.lat}&maxlng=#{point.lng}&level=4&CTID=8"
+    area_code = morph_request(url).areas.first.area_code
+
+    url = "http://maps.met.police.uk/php/dataview.php?area=#{area_code}&ct=8"
+    html = get_request(url)
+    doc = Hpricot html
+    borough = doc.at('ul.bread-crumb/li[3]/a/text()').to_s
+
+    group = PoliceGroup.find_by_name(borough)
     
-    group = PoliceGroup.find_by_name(name)
-    
-    redirect_to :controller => 'police_group', :action => 'show', :id => group.id
+    # redirect_to :controller => 'police_group', :action => 'show', :id => group.id
+    redirect_to group
   end
+  
+  private
+
+  def get_request url
+    url = URI.encode(url)
+    RestClient.get(url)
+  end
+
+  def morph_request url
+    response = get_request url
+    json = response.to_s
+    hash = eval(json.gsub("':","' => ").sub("'type'","'request_type'"))
+    Morph.from_hash(hash)
+  end
+
 end

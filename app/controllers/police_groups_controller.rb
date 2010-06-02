@@ -6,7 +6,7 @@ class PoliceGroupsController < ResourceController::Base
     def ensure_current_url
       begin
         group = PoliceGroup.find(params[:id])
-        redirect_to group, :status => :moved_permanently if group.has_better_id?
+        redirect_to(group, :status => :moved_permanently) if group.has_better_id?
       rescue
         render_not_found
       end
